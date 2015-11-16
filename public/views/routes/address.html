@@ -1,12 +1,13 @@
+
 <h1>Addresses</h1>
 
-<select name="address_form">
-    <option value="scott">Scott</option>
-    <option value="kris">Kris</option>
-    <option value="sam">Sam</option>
-    <option value="all">All</option>
+<select name="address_form" ng-model="data.address">
+    <option value="Scott">Scott</option>
+    <option value="Kris">Kris</option>
+    <option value="Sam">Sam</option>
+    <option value="Kris AND Scott AND Sam">All</option>
 </select>
+<button ng-click='getAddress()'>Submit</button>
 
-<div class="data">
-
+<div class="data" ng-repeat>
 </div>
