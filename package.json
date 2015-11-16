@@ -1,0 +1,17 @@
+{
+  "name": "sql_problems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "'Sam Moss'",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-route": "^1.4.7",
+    "express": "^4.13.3",
+    "path": "^0.12.7"
+  }
+}
