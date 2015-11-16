@@ -5,9 +5,11 @@
     <option value="Scott">Scott</option>
     <option value="Kris">Kris</option>
     <option value="Sam">Sam</option>
-    <option value="Kris AND Scott AND Sam">All</option>
+    <option value="Kris, Scott, Sam">All</option>
 </select>
 <button ng-click='getAddress()'>Submit</button>
 
-<div class="data" ng-repeat>
+<h4>{{result[0].name}}</h4>
+<div class="data" ng-repeat="row in result">
+    <p>{{row.address_type}}: {{row.address_street}}, {{row.address_city}}, {{row.address_state}}, {{row.address_zip}}</p>
 </div>

@@ -13,6 +13,7 @@ dbApp.controller('AddressController', ['$scope','$http', function($scope,$http){
     //$scope.thing = "string";
 
     $scope.getAddress = function(){
+        $scope.result = [];
         $http
             .get('/address_call', {
                 params: {
@@ -20,7 +21,8 @@ dbApp.controller('AddressController', ['$scope','$http', function($scope,$http){
                 }
             })
             .success(function(data) {
-                $scope.data.return = data
+                console.log(data);
+                $scope.result = data
             }
         );
     }
