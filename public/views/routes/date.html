@@ -1,1 +1,13 @@
 <h1>Date</h1>
+
+<select name="date" ng-model="data.name">
+    <option value="Scott">Scott</option>
+    <option value="Kris">Kris</option>
+    <option value="Sam">Sam</option>
+</select>
+
+<input type="text" name="start" ng-model="data.after">
+<input type="text" name="end" ng-model="data.before">
+
+
+<button ng-click='getDate()'>Submit</button>

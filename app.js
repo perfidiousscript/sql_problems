@@ -19,7 +19,8 @@ app.get('/address_call',function(req,res) {
     var results = [];
 
     pg.connect(conString, function (err, client, done) {
-        var query = client.query('SELECT users.name, addresses.* FROM users JOIN addresses ON users.id=addresses.user_id WHERE users.name = ($1)', [req.query.person]
+        var query = client.query('SELECT users.name, addresses.* FROM users JOIN addresses ON users.id=addresses.user_id WHERE users.name = ($1);',
+            [req.query.person]
         );
         query.on('row', function (row) {
             results.push(row);
@@ -29,6 +30,36 @@ app.get('/address_call',function(req,res) {
             client.end();
             return res.json(results);
         });
+        if (err) {
+            return console.log('We have an issue here: ', err)
+        }
+    });
+});
+
+app.get('/date_call',function(req,res) {
+    var results = [];
+
+    pg.connect(conString, function (err, client, done) {
+
+        console.log(req.query);
+
+        var query = client.query('SELECT users.name, addresses.*, orders.* ' +
+        'FROM orders JOIN addresses ON addresses.address_id = orders.ship_address_id ' +
+        'JOIN users ON users.id = orders.user_id WHERE users.name = $1 AND ' +
+            'orders.order_date > $2 AND orders.order_date < $3;',
+            [req.query.name,req.query.after,req.query.before]
+        );
+
+
+        query.on('row', function (row) {
+            results.push(row);
+        });
+
+        query.on('end', function () {
+            client.end();
+            return res.json(results);
+        });
+
         if (err) {
             return console.log('We have an issue here: ', err)
         }
